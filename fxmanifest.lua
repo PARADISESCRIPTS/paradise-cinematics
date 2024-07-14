@@ -19,4 +19,8 @@ files {
     'ui.html'
 }
 
+dependencies {
+    'ox_lib'
+}
+
 lua54 'yes'
