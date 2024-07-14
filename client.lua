@@ -30,9 +30,11 @@ end
 
 -- Function to show notification
 function showNotification(message)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString(message)
-    DrawNotification(false, false)
+    lib.notify({
+        title = 'Cinematic Mode',
+        description = message,
+        type = 'success' -- You can change this to 'error', 'info', etc. based on the context
+    })
 end
 
 -- Command to toggle cinematic mode
