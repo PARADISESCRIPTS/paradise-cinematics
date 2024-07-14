@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Mode</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .cinematic-bar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 14.5vh;
+            background-color: black;
+            transition: transform 0.5s ease-in-out;
+        }
+        .top-bar {
+            top: 0;
+            transform: translateY(-100%);
+        }
+        .bottom-bar {
+            bottom: 0;
+            transform: translateY(100%);
+        }
+        .cinematic-mode .top-bar {
+            transform: translateY(0);
+        }
+        .cinematic-mode .bottom-bar {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="cinematic-bar top-bar"></div>
+    <div class="cinematic-bar bottom-bar"></div>
+
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'setCinematicMode') {
+                if (event.data.state) {
+                    document.body.classList.add('cinematic-mode');
+                } else {
+                    document.body.classList.remove('cinematic-mode');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
